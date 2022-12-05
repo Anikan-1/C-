@@ -21,20 +21,27 @@
 // 78 -> третьей цифры нет
 // 32679 -> 6
 
-// void ThirdDigit(int a){
-//    if (a>99){
-//     string b = a.ToString();
-//     Console.WriteLine(b[2]);
-//    }
-//     else {
-//         Console.WriteLine("В числе нет третьей цифры");
-//     }
-// }
+void ThirdDigit(int a){
 
-// Console.WriteLine("Введите число ");
-// int num2 = Convert.ToInt32(Console.ReadLine());
-// Console.Write($"Результат - ");
-// ThirdDigit (num2);
+    if (a <= 99)
+    {
+        Console.WriteLine("В числе нет третьей цифры");
+    }
+    else
+    {
+        while (a >= 1000)
+        {
+            a /= 10;
+        }
+        a = a % 10;
+        Console.WriteLine(a);
+    }
+}
+
+Console.WriteLine("Введите число ");
+int num2 = Convert.ToInt32(Console.ReadLine());
+Console.Write($"Результат - ");
+ThirdDigit (num2);
 
 // Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, 
 //и проверяет, является ли этот день выходным.

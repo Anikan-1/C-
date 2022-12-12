@@ -26,7 +26,21 @@
 // 82 -> 10
 // 9012 -> 12
 
+int SumDigit (int num) {
 
+int sum = 0;
+for (int i = 0; num > 0; i++){
+    sum += num % 10; 
+    num /= 10; 
+}
+
+    Console.WriteLine($"Результат - {sum}");
+    return sum;
+}
+
+Console.WriteLine("Введите число ");
+int num = Convert.ToInt32(Console.ReadLine());
+SumDigit (num);
 
 
 // Задача 29: Напишите программу, которая задаёт массив из произвольного кол-ва элементов и выводит их на экран.

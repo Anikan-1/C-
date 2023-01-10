@@ -1,55 +1,23 @@
-﻿// Задать двумерный масси m,n заполнить случайныи целыми ячислами
+﻿// Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
 
-int [,] Create2dArray(int rows, int cols, int min, int max){
-    int [,] array = new int [rows, cols];
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
-            array[i,j] = new Random().Next(min,max+1);
-        }
-    }
-    return array;
-}
 
-void Show2dArray (int [,] array){
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-           Console.Write(array[i,j]+" ");
-        }
-        Console.WriteLine();
-    }
-    
-}
-
-Console.Write("Введите количество строк: ");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите количество столбцов: ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите min элемент: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите max элемент: ");
-int max = Convert.ToInt32(Console.ReadLine());
-int [,] array = Create2dArray(m,n,min,max);
-Show2dArray(array);
-
-// Задать двумерный масси m,n. Каждый элемент массива находится по формуле m+n
-
-// int [,] Create2dArray(int rows, int cols){
-//     int [,] array = new int [rows, cols];
+// double [,] Create2dArray(int rows, int cols){
+//     double [,] array = new double [rows, cols];
 //     for (int i = 0; i < rows; i++)
 //     {
 //         for (int j = 0; j < cols; j++)
 //         {
-//             array[i,j] = i + j;
+//             array[i,j] = Convert.ToDouble(new Random().Next(-100,100)/10.0);
 //         }
 //     }
 //     return array;
 // }
 
-// void Show2dArray (int [,] array){
+// void Show2dArray (double [,] array){
 //     for (int i = 0; i < array.GetLength(0); i++)
 //     {
 //         for (int j = 0; j < array.GetLength(1); j++)
@@ -65,11 +33,17 @@ Show2dArray(array);
 // int m = Convert.ToInt32(Console.ReadLine());
 // Console.Write("Введите количество столбцов: ");
 // int n = Convert.ToInt32(Console.ReadLine());
-// int [,] array = Create2dArray(m,n);
+// double [,] array = Create2dArray(m,n);
 // Show2dArray(array);
 
-// Задать двумерный массив
-// Найти элементы, у которых оба индекса четные и заменить элементы на их квадраты
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
+//и возвращает значение этого элемента или же указание, что такого элемента нет.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 17 -> такого числа в массиве нет
+
 
 // int [,] Create2dArray(int rows, int cols, int min, int max){
 //     int [,] array = new int [rows, cols];
@@ -92,19 +66,11 @@ Show2dArray(array);
 //         }
 //         Console.WriteLine();
 //     }
+    
 // }
 
-// int [,] FindQuaters(int [,] array){
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//            if (i%2 == 0 && j%2 == 0){
-//             array[i,j] = array[i,j]*array[i,j];
-//            }
-//         }
-//     }
-//     return array;
+// void FindEl (int [,] array, int k, int l){
+//     Console.Write("Искомый элемент: "+ array[k,l]+" ");
 // }
 
 // Console.Write("Введите количество строк: ");
@@ -115,16 +81,21 @@ Show2dArray(array);
 // int min = Convert.ToInt32(Console.ReadLine());
 // Console.Write("Введите max элемент: ");
 // int max = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите строку: ");
+// int k = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите столбец: ");
+// int l = Convert.ToInt32(Console.ReadLine());
 // int [,] array = Create2dArray(m,n,min,max);
 // Show2dArray(array);
-// FindQuaters(array);
-// Console.WriteLine();
-// Show2dArray(array);
+// FindEl (array, k, l);
 
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-// ЗАДАЙТЕ ЛВУМЕРНЫЙ МАССИВ
-//  Найдите сумму элементов, находящихся на главной диагонали
-// с индексами (0;0),(1,1) итд
 
 int [,] Create2dArray(int rows, int cols, int min, int max){
     int [,] array = new int [rows, cols];
@@ -147,20 +118,19 @@ void Show2dArray (int [,] array){
         }
         Console.WriteLine();
     }
+    
 }
 
-void SumEl(int [,] array){
-    int sum = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
+void SrednArif (int [,] array){
+   for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+         double sum = 0;
+        for (int j = 0; j < array.GetLength(0); j++)
         {
-           if (i == j){
-            sum += array[i,j];
-           }
+            sum += array[j,i];
         }
-    }
-    System.Console.WriteLine("Сумма элементов главной диагонали: " + sum);
+        Console.Write(Math.Round(sum / array.GetLength(0),2) + " ");
+    }    
 }
 
 Console.Write("Введите количество строк: ");
@@ -171,6 +141,7 @@ Console.Write("Введите min элемент: ");
 int min = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите max элемент: ");
 int max = Convert.ToInt32(Console.ReadLine());
+
 int [,] array = Create2dArray(m,n,min,max);
-SumEl(array);
 Show2dArray(array);
+SrednArif (array);
